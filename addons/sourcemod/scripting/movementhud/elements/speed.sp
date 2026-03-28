@@ -10,6 +10,7 @@ MHudEnumPreference SpeedRounding;
 MHudRGBPreference SpeedGainColor;
 MHudRGBPreference SpeedLossColor;
 MHudRGBPreference SpeedJBColor;
+MHudRGBPreference SpeedCJColor;
 
 static const char Modes[SpeedMode_COUNT][] =
 {
@@ -58,6 +59,7 @@ void OnPluginStart_Elements_Other_Speed()
     SpeedGainColor = new MHudRGBPreference("speed_color_gain", "Speed - Gain Color", 0, 255, 0);
     SpeedLossColor = new MHudRGBPreference("speed_color_loss", "Speed - Loss Color", 255, 0, 0);
     SpeedJBColor = new MHudRGBPreference("speed_color_jb", "Speed - Jump Bug Color", 0, 255, 0);
+    SpeedCJColor = new MHudRGBPreference("speed_color_cj", "Speed - Crouch Jump Color", 0, 255, 0);
 }
 
 void OnGameFrame_Element_Speed(int client, int target)
@@ -157,6 +159,10 @@ void OnGameFrame_Element_Speed(int client, int target)
     if (gB_DidJumpBug[target])
     {
         SpeedJBColor.GetRGB(client, rgb);
+    }
+    if (gB_DidCrouchJump[target])
+    {
+        SpeedCJColor.GetRGB(client, rgb);
     }
 
     Call_OnDrawSpeed(client, xy, rgb);
