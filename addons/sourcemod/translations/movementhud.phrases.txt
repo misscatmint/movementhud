@@ -1,0 +1,760 @@
+"Phrases"
+{
+    "menu.basic_preferences"
+    {
+        "en" "Basic settings"
+        "chi" "简易设置"
+        "ru" "Базовые настройки"
+    }
+    "menu.advanced_preferences"
+    {
+        "en" "Advanced settings"
+        "chi" "高级设置"
+        "ru" "Расширенные настройки"
+    }
+    "menu.third_party_prefix"
+    {
+        "en" "[Third-party] %s"
+        "chi" "[扩展] %s"
+        "ru" "[Сторонний модуль] %s"
+    }
+
+    "chat.import_failed"
+    {
+        "en" "Couldn't import that settings code."
+        "chi" "导入设置代码失败。"
+        "ru" "Не удалось импортировать этот код настроек."
+    }
+    "chat.import_success"
+    {
+        "en" "Settings imported."
+        "chi" "设置已导入。"
+        "ru" "Настройки импортированы."
+    }
+    "chat.preference_set"
+    {
+        "en" "\x05%s\x01 updated to \x03%s\x01 (\x0C%s\x01)"
+        "chi" "\x05%s\x01 已更新为 \x03%s\x01（\x0C%s\x01）"
+        "ru" "\x05%s\x01 изменено на \x03%s\x01 (\x0C%s\x01)"
+    }
+    "chat.enter_value"
+    {
+        "en" "Type a \x03value\x01 for \x05%s\x01 in chat."
+        "chi" "请在聊天里为 \x05%s\x01 输入一个 \x03值\x01。"
+        "ru" "Введите в чат \x03значение\x01 для \x05%s\x01."
+    }
+    "chat.value_format"
+    {
+        "en" "Expected format - %s"
+        "chi" "输入格式：%s"
+        "ru" "Ожидаемый формат - %s"
+    }
+    "chat.custom_inputs"
+    {
+        "en" "Special inputs - \x03cancel\x01, \x03reset\x01"
+        "chi" "可用快捷输入：\x03cancel\x01、\x03reset\x01"
+        "ru" "Специальные команды - \x03cancel\x01, \x03reset\x01"
+    }
+    "chat.input_timed_out"
+    {
+        "en" "\x07Input timed out.\x01"
+        "chi" "\x07输入超时。\x01"
+        "ru" "\x07Время ввода истекло.\x01"
+    }
+    "chat.input_cancelled"
+    {
+        "en" "\x07Input cancelled.\x01"
+        "chi" "\x07输入已取消。\x01"
+        "ru" "\x07Ввод отменён.\x01"
+    }
+
+    "console.page_header"
+    {
+        "en" "[MovementHUD] Settings page %d of %d:"
+        "chi" "[MovementHUD] 设置列表，第 %d / %d 页："
+        "ru" "[MovementHUD] Страница настроек %d из %d:"
+    }
+    "console.more_preferences"
+    {
+        "en" "* Run \"%s %d\" to view the next page"
+        "chi" "* 输入 \"%s %d\" 查看下一页"
+        "ru" "* Выполните \"%s %d\", чтобы открыть следующую страницу"
+    }
+    "console.usage_header"
+    {
+        "en" "%s Commands for %s:"
+        "chi" "%s %s 的命令："
+        "ru" "%s Команды для %s:"
+    }
+    "console.usage_set"
+    {
+        "en" "Usage - %s set %s"
+        "chi" "用法：%s set %s"
+        "ru" "Использование - %s set %s"
+    }
+    "console.label_id"
+    {
+        "en" "Id"
+        "chi" "ID"
+        "ru" "ID"
+    }
+    "console.label_name"
+    {
+        "en" "Name"
+        "chi" "名称"
+        "ru" "Название"
+    }
+    "console.label_type"
+    {
+        "en" "Type"
+        "chi" "类型"
+        "ru" "Тип"
+    }
+    "console.label_format"
+    {
+        "en" "Format"
+        "chi" "格式"
+        "ru" "Формат"
+    }
+    "console.label_provider"
+    {
+        "en" "Provider"
+        "chi" "提供方"
+        "ru" "Провайдер"
+    }
+    "console.label_default_value"
+    {
+        "en" "Default value"
+        "chi" "默认值"
+        "ru" "Значение по умолчанию"
+    }
+
+    "type.bool"
+    {
+        "en" "Boolean"
+        "chi" "布尔"
+        "ru" "Логический"
+    }
+    "type.enum"
+    {
+        "en" "Enum"
+        "chi" "枚举"
+        "ru" "Перечисление"
+    }
+    "type.xy"
+    {
+        "en" "XY position"
+        "chi" "XY 坐标"
+        "ru" "Позиция XY"
+    }
+    "type.rgb"
+    {
+        "en" "RGB color"
+        "chi" "RGB 颜色"
+        "ru" "Цвет RGB"
+    }
+
+    "format.value"
+    {
+        "en" "<\x03value\x01>"
+        "chi" "<\x03值\x01>"
+        "ru" "<\x03значение\x01>"
+    }
+    "format.bool"
+    {
+        "en" "<\x03true/false\x01>"
+        "chi" "<\x03true/false\x01>"
+        "ru" "<\x03true/false\x01>"
+    }
+    "format.enum_range"
+    {
+        "en" "<\x030-%d\x01>"
+        "chi" "<\x030-%d\x01>"
+        "ru" "<\x030-%d\x01>"
+    }
+    "format.xy"
+    {
+        "en" "<\x03-1 to 1000\x01> <\x03-1 to 1000\x01>"
+        "chi" "<\x03-1 到 1000\x01> <\x03-1 到 1000\x01>"
+        "ru" "<\x03-1 до 1000\x01> <\x03-1 до 1000\x01>"
+    }
+    "format.rgb"
+    {
+        "en" "<\x070-255\x01> <\x040-255\x01> <\x0C0-255\x01>"
+        "chi" "<\x070-255\x01> <\x040-255\x01> <\x0C0-255\x01>"
+        "ru" "<\x070-255\x01> <\x040-255\x01> <\x0C0-255\x01>"
+    }
+
+    "value.enabled"
+    {
+        "en" "On"
+        "chi" "开"
+        "ru" "Вкл"
+    }
+    "value.disabled"
+    {
+        "en" "Off"
+        "chi" "关"
+        "ru" "Выкл"
+    }
+    "value.custom"
+    {
+        "en" "Custom"
+        "chi" "自定义"
+        "ru" "Свое"
+    }
+
+    "xy.bottom"
+    {
+        "en" "Bottom"
+        "chi" "底部"
+        "ru" "Снизу"
+    }
+    "xy.bottom_left"
+    {
+        "en" "Bottom left"
+        "chi" "左下"
+        "ru" "Слева снизу"
+    }
+    "xy.bottom_right"
+    {
+        "en" "Bottom right"
+        "chi" "右下"
+        "ru" "Справа снизу"
+    }
+    "xy.middle"
+    {
+        "en" "Middle"
+        "chi" "中间"
+        "ru" "По центру"
+    }
+    "xy.middle_left"
+    {
+        "en" "Middle left"
+        "chi" "左中"
+        "ru" "Слева по центру"
+    }
+    "xy.middle_right"
+    {
+        "en" "Middle right"
+        "chi" "右中"
+        "ru" "Справа по центру"
+    }
+    "xy.top"
+    {
+        "en" "Top"
+        "chi" "顶部"
+        "ru" "Сверху"
+    }
+    "xy.top_left"
+    {
+        "en" "Top left"
+        "chi" "左上"
+        "ru" "Слева сверху"
+    }
+    "xy.top_right"
+    {
+        "en" "Top right"
+        "chi" "右上"
+        "ru" "Справа сверху"
+    }
+
+    "rgb.red"
+    {
+        "en" "Red"
+        "chi" "红色"
+        "ru" "Красный"
+    }
+    "rgb.green"
+    {
+        "en" "Green"
+        "chi" "绿色"
+        "ru" "Зеленый"
+    }
+    "rgb.lime"
+    {
+        "en" "Lime"
+        "chi" "黄绿色"
+        "ru" "Лаймовый"
+    }
+    "rgb.blue"
+    {
+        "en" "Blue"
+        "chi" "蓝色"
+        "ru" "Синий"
+    }
+    "rgb.cyan"
+    {
+        "en" "Cyan"
+        "chi" "青色"
+        "ru" "Голубой"
+    }
+    "rgb.yellow"
+    {
+        "en" "Yellow"
+        "chi" "黄色"
+        "ru" "Желтый"
+    }
+    "rgb.orange"
+    {
+        "en" "Orange"
+        "chi" "橙色"
+        "ru" "Оранжевый"
+    }
+    "rgb.purple"
+    {
+        "en" "Purple"
+        "chi" "紫色"
+        "ru" "Фиолетовый"
+    }
+    "rgb.white"
+    {
+        "en" "White"
+        "chi" "白色"
+        "ru" "Белый"
+    }
+    "rgb.black"
+    {
+        "en" "Black"
+        "chi" "黑色"
+        "ru" "Черный"
+    }
+    "rgb.gray"
+    {
+        "en" "Gray"
+        "chi" "灰色"
+        "ru" "Серый"
+    }
+
+    "indicator.jumpbug"
+    {
+        "en" "JUMPBUG"
+        "chi" "JUMPBUG"
+        "ru" "JUMPBUG"
+    }
+    "indicator.crouch_jump"
+    {
+        "en" "CROUCH JUMP"
+        "chi" "大跳"
+        "ru" "ПРЫЖОК С ПРИСЕДОМ"
+    }
+    "indicator.perfect_bhop"
+    {
+        "en" "PERFECT BHOP"
+        "chi" "完美连跳"
+        "ru" "ИДЕАЛЬНЫЙ BHOP"
+    }
+    "indicator.edge_bug"
+    {
+        "en" "EDGE BUG"
+        "chi" "EDGE BUG"
+        "ru" "EDGE BUG"
+    }
+    "indicator.first_tick_gain"
+    {
+        "en" "FIRST TICK GAIN"
+        "chi" "首 Tick 增速"
+        "ru" "ПРИРОСТ НА ПЕРВОМ ТИКЕ"
+    }
+    "indicator.crouched"
+    {
+        "en" "CROUCHED"
+        "chi" "已蹲下"
+        "ru" "ПРИСЕД"
+    }
+    "indicator_abbr.jumpbug"
+    {
+        "en" "JB"
+        "chi" "JB"
+        "ru" "JB"
+    }
+    "indicator_abbr.crouch_jump"
+    {
+        "en" "CJ"
+        "chi" "CJ"
+        "ru" "CJ"
+    }
+    "indicator_abbr.perfect_bhop"
+    {
+        "en" "PERF"
+        "chi" "PERF"
+        "ru" "PERF"
+    }
+    "indicator_abbr.edge_bug"
+    {
+        "en" "EB"
+        "chi" "EB"
+        "ru" "EB"
+    }
+    "indicator_abbr.first_tick_gain"
+    {
+        "en" "G"
+        "chi" "G"
+        "ru" "G"
+    }
+    "indicator_abbr.crouched"
+    {
+        "en" "C"
+        "chi" "蹲"
+        "ru" "C"
+    }
+
+    "pref.keys_mode"
+    {
+        "en" "Keys - mode"
+        "chi" "按键显示 - 模式"
+        "ru" "Клавиши - режим"
+    }
+    "pref.keys_position"
+    {
+        "en" "Keys - position"
+        "chi" "按键显示 - 位置"
+        "ru" "Клавиши - позиция"
+    }
+    "pref.keys_color_normal"
+    {
+        "en" "Keys - normal color"
+        "chi" "按键显示 - 普通颜色"
+        "ru" "Клавиши - обычный цвет"
+    }
+    "pref.keys_color_overlap"
+    {
+        "en" "Keys - overlap color"
+        "chi" "按键显示 - 冲键颜色"
+        "ru" "Клавиши - цвет при зажатии противоположных"
+    }
+    "pref.keys_mouse_direction"
+    {
+        "en" "Keys - mouse direction"
+        "chi" "按键显示 - 鼠标方向"
+        "ru" "Клавиши - направление мыши"
+    }
+    "pref.keys_color_by_speed"
+    {
+        "en" "Keys - speed-based color"
+        "chi" "按键显示 - 基于速度的颜色"
+        "ru" "Клавиши - цвет по скорости"
+    }
+    "pref.keys_spacing_mode"
+    {
+        "en" "Keys - spacing preset"
+        "chi" "按键显示 - 间距预设"
+        "ru" "Клавиши - пресет расстояния"
+    }
+    "pref.keys_color_gain"
+    {
+        "en" "Keys - gain color"
+        "chi" "按键显示 - 增速颜色"
+        "ru" "Клавиши - цвет прироста"
+    }
+    "pref.keys_color_loss"
+    {
+        "en" "Keys - loss color"
+        "chi" "按键显示 - 掉速颜色"
+        "ru" "Клавиши - цвет потери скорости"
+    }
+
+    "pref.speed_mode"
+    {
+        "en" "Speed - mode"
+        "chi" "速度 - 模式"
+        "ru" "Скорость - режим"
+    }
+    "pref.speed_position"
+    {
+        "en" "Speed - position"
+        "chi" "速度 - 位置"
+        "ru" "Скорость - позиция"
+    }
+    "pref.speed_color_normal"
+    {
+        "en" "Speed - normal color"
+        "chi" "速度 - 普通颜色"
+        "ru" "Скорость - обычный цвет"
+    }
+    "pref.speed_color_perf"
+    {
+        "en" "Speed - perfect bhop color"
+        "chi" "速度 - Perf 颜色"
+        "ru" "Скорость - цвет идеального bhop"
+    }
+    "pref.speed_takeoff"
+    {
+        "en" "Speed - takeoff display"
+        "chi" "速度 - 起跳速度显示"
+        "ru" "Скорость - показ скорости отрыва"
+    }
+    "pref.speed_rounding"
+    {
+        "en" "Speed - rounding"
+        "chi" "速度 - 取整方式"
+        "ru" "Скорость - округление"
+    }
+    "pref.speed_color_by_speed"
+    {
+        "en" "Speed - dynamic coloring"
+        "chi" "速度 - 动态着色"
+        "ru" "Скорость - динамический цвет"
+    }
+    "pref.speed_color_gain"
+    {
+        "en" "Speed - gain color"
+        "chi" "速度 - 增速颜色"
+        "ru" "Скорость - цвет прироста"
+    }
+    "pref.speed_color_loss"
+    {
+        "en" "Speed - loss color"
+        "chi" "速度 - 掉速颜色"
+        "ru" "Скорость - цвет потери скорости"
+    }
+    "pref.speed_color_jb"
+    {
+        "en" "Speed - JumpBug color"
+        "chi" "速度 - JumpBug 颜色"
+        "ru" "Скорость - цвет JumpBug"
+    }
+    "pref.speed_color_cj_enabled"
+    {
+        "en" "Speed - crouch jump color"
+        "chi" "速度 - 大跳颜色开关"
+        "ru" "Скорость - цвет прыжка с приседом"
+    }
+    "pref.speed_color_cj"
+    {
+        "en" "Speed - crouch jump color"
+        "chi" "速度 - 大跳颜色"
+        "ru" "Скорость - цвет прыжка с приседом"
+    }
+
+    "pref.update_speed"
+    {
+        "en" "HUD update rate"
+        "chi" "HUD 刷新频率"
+        "ru" "Частота обновления HUD"
+    }
+    "pref.disable_in_freecam"
+    {
+        "en" "Hide HUD in freecam"
+        "chi" "自由镜头时隐藏 HUD"
+        "ru" "Скрывать HUD в свободной камере"
+    }
+
+    "pref.indicators_mode"
+    {
+        "en" "Indicators - enabled"
+        "chi" "提示 - 开关"
+        "ru" "Индикаторы - включены"
+    }
+    "pref.indicators_position"
+    {
+        "en" "Indicators - position"
+        "chi" "提示 - 位置"
+        "ru" "Индикаторы - позиция"
+    }
+    "pref.indicators_color"
+    {
+        "en" "Indicators - default color"
+        "chi" "提示 - 默认颜色"
+        "ru" "Индикаторы - основной цвет"
+    }
+    "pref.indicators_jb_color"
+    {
+        "en" "Indicators - JumpBug color"
+        "chi" "提示 - JumpBug 颜色"
+        "ru" "Индикаторы - цвет JumpBug"
+    }
+    "pref.indicators_pb_color"
+    {
+        "en" "Indicators - perfect bhop color"
+        "chi" "提示 - Perf 颜色"
+        "ru" "Индикаторы - цвет идеального bhop"
+    }
+    "pref.indicators_jb_enabled"
+    {
+        "en" "Indicators - JumpBug"
+        "chi" "提示 - JumpBug"
+        "ru" "Индикаторы - JumpBug"
+    }
+    "pref.indicators_cj_enabled"
+    {
+        "en" "Indicators - crouch jump"
+        "chi" "提示 - 蹲跳"
+        "ru" "Индикаторы - прыжок с приседом"
+    }
+    "pref.indicators_pb_enabled"
+    {
+        "en" "Indicators - perfect bhop"
+        "chi" "提示 - 完美连跳"
+        "ru" "Индикаторы - идеальный bhop"
+    }
+    "pref.indicators_eb_enabled"
+    {
+        "en" "Indicators - edge bug"
+        "chi" "提示 - Edge Bug"
+        "ru" "Индикаторы - Edge Bug"
+    }
+    "pref.indicators_ftg"
+    {
+        "en" "Indicators - first tick gain"
+        "chi" "提示 - 首 Tick 增速"
+        "ru" "Индикаторы - прирост на первом тике"
+    }
+    "pref.indicators_crouch"
+    {
+        "en" "Indicators - crouch status"
+        "chi" "提示 - 下蹲状态"
+        "ru" "Индикаторы - статус приседа"
+    }
+    "pref.indicators_abbrs"
+    {
+        "en" "Indicators - abbreviations"
+        "chi" "提示 - 缩写显示"
+        "ru" "Индикаторы - сокращения"
+    }
+
+    "enum.keys_mode.disabled"
+    {
+        "en" "Off"
+        "chi" "关"
+        "ru" "Выкл"
+    }
+    "enum.keys_mode.underscores"
+    {
+        "en" "Show blanks as underscores"
+        "chi" "空位显示为下划线"
+        "ru" "Показывать пустые слоты подчёркиванием"
+    }
+    "enum.keys_mode.hide_blanks"
+    {
+        "en" "Hide blank keys"
+        "chi" "隐藏空位"
+        "ru" "Скрывать пустые клавиши"
+    }
+    "enum.spacing_mode.full_hd_fullscreen"
+    {
+        "en" "1080p fullscreen"
+        "chi" "1080p 全屏"
+        "ru" "1080p, полный экран"
+    }
+    "enum.spacing_mode.qhd_scaled"
+    {
+        "en" "1440p scaled"
+        "chi" "1440p 缩放"
+        "ru" "1440p, с масштабированием"
+    }
+    "enum.spacing_mode.qhd_native"
+    {
+        "en" "1440p native"
+        "chi" "1440p 原生"
+        "ru" "1440p, нативно"
+    }
+    "enum.spacing_mode.legacy"
+    {
+        "en" "Legacy"
+        "chi" "旧版"
+        "ru" "Классика"
+    }
+    "enum.color_by_speed.current_speed"
+    {
+        "en" "Color by current speed"
+        "chi" "按当前速度着色"
+        "ru" "Цвет по текущей скорости"
+    }
+    "enum.color_by_speed.gain_instant"
+    {
+        "en" "Color by instant gain"
+        "chi" "按瞬时增速着色"
+        "ru" "Цвет по мгновенному приросту"
+    }
+    "enum.color_by_speed.gain_average"
+    {
+        "en" "Color by average gain"
+        "chi" "按平均增速着色"
+        "ru" "Цвет по среднему приросту"
+    }
+    "enum.mouse_direction.side_arrows"
+    {
+        "en" "Side arrows"
+        "chi" "左右箭头"
+        "ru" "Боковые стрелки"
+    }
+    "enum.mouse_direction.arrow_row"
+    {
+        "en" "Arrow row"
+        "chi" "单独箭头行"
+        "ru" "Отдельная строка со стрелкой"
+    }
+    "enum.speed_mode.decimal"
+    {
+        "en" "Decimal"
+        "chi" "小数"
+        "ru" "С десятичными"
+    }
+    "enum.speed_mode.integer"
+    {
+        "en" "Whole number"
+        "chi" "整数"
+        "ru" "Целое число"
+    }
+    "enum.rounding.down"
+    {
+        "en" "Round down"
+        "chi" "向下取整"
+        "ru" "Округлять вниз"
+    }
+    "enum.rounding.nearest"
+    {
+        "en" "Round to nearest"
+        "chi" "四舍五入"
+        "ru" "Округлять до ближайшего"
+    }
+    "enum.rounding.up"
+    {
+        "en" "Round up"
+        "chi" "向上取整"
+        "ru" "Округлять вверх"
+    }
+    "enum.takeoff.jumps_only"
+    {
+        "en" "Jumps only"
+        "chi" "仅跳跃时显示"
+        "ru" "Только на прыжках"
+    }
+    "enum.takeoff.always"
+    {
+        "en" "Always show"
+        "chi" "始终显示"
+        "ru" "Показывать всегда"
+    }
+    "enum.update_speed.fastest"
+    {
+        "en" "Fastest"
+        "chi" "最快"
+        "ru" "Максимум"
+    }
+    "enum.update_speed.fast"
+    {
+        "en" "Fast"
+        "chi" "快"
+        "ru" "Быстро"
+    }
+    "enum.update_speed.normal"
+    {
+        "en" "Normal"
+        "chi" "正常"
+        "ru" "Нормально"
+    }
+    "enum.update_speed.slow"
+    {
+        "en" "Slow"
+        "chi" "慢"
+        "ru" "Медленно"
+    }
+    "enum.update_speed.slowest"
+    {
+        "en" "Slowest"
+        "chi" "最慢"
+        "ru" "Очень медленно"
+    }
+}

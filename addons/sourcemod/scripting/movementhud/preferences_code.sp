@@ -1,4 +1,4 @@
-static int CurrentRevision = 3;
+static int CurrentRevision = 4;
 static ArrayList PreferencesInCode;
 
 void OnPluginStart_PreferencesCode()
@@ -45,6 +45,9 @@ void OnPluginStart_PreferencesCode()
     PreferencesInCode.Push(DisableInFreeCamera);
     PreferencesInCode.Push(SpeedJBColor);
     PreferencesInCode.Push(IndicatorsPBColor);
+
+    // Revision 4
+    PreferencesInCode.Push(SpeedCJEnabled);
 }
 
 void GeneratePreferencesCode(int client, char[] buffer, int maxlength)
