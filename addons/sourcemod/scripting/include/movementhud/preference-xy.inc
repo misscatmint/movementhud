@@ -13,6 +13,19 @@ static char XYMapping[][][] =
 	{ "660 100", "Top right" }
 };
 
+static const char XYPhraseKeys[][] =
+{
+    "xy.bottom",
+    "xy.bottom_left",
+    "xy.bottom_right",
+    "xy.middle",
+    "xy.middle_left",
+    "xy.middle_right",
+    "xy.top",
+    "xy.top_left",
+    "xy.top_right"
+};
+
 static void StringToXY(const char[] str, int xy[2])
 {
     char entries[2][4];
@@ -41,6 +54,7 @@ methodmap MHudXYPreference < MHudPreference
             preference
                 .WithMetadata("type", "xy")
                 .WithMetadata("format", "<\x03-1 to 1000\x01> <\x03-1 to 1000\x01>")
+                .WithMetadata("format_key", "format.xy")
                 .WithMetadataCell("self", preference)
                 .HandleInput(MHud_XY_InputHandler)
                 .HandleDisplay(MHud_XY_DisplayHandler)
@@ -94,11 +108,11 @@ public bool MHud_XY_DisplayHandler(int client, char[] buffer, int maxlength, Str
     int currentIndex = MHud_GetCurrentPresetIndex(value, XYMapping, sizeof(XYMapping));
     if (currentIndex == -1)
     {
-        Format(buffer, maxlength, "Custom");
+        TranslatePhrase(client, "value.custom", buffer, maxlength);
         return true;
     }
 
-    Format(buffer, maxlength, "%s", XYMapping[currentIndex][1]);
+    TranslatePhrase(client, XYPhraseKeys[currentIndex], buffer, maxlength);
     return true;
 }
 

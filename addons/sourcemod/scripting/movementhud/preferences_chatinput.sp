@@ -23,11 +23,14 @@ void WaitForPreferenceChatInputFromClient(int client, char preferenceId[MHUD_MAX
 	InputMenuSelection[client] = menuSelection;
 
 	char format[64];
-	GetPreferenceFormat(false, preference, format, sizeof(format));
+	GetPreferenceFormat(client, false, preference, format, sizeof(format));
 
-	MHud_PrintToChat(client, "Enter a \x03value\x01 for \x05%s\x01 in the chat", preference.Name);
-	MHud_PrintToChat(client, "Value format: %s", format);
-	MHud_PrintToChat(client, "Available custom inputs: \x03cancel\x01, \x03reset\x01");
+	char name[128];
+	GetPreferenceDisplayName(client, preference, name, sizeof(name));
+
+	MHud_PrintToChat(client, "%T", "chat.enter_value", GetTranslationTarget(client), name);
+	MHud_PrintToChat(client, "%T", "chat.value_format", GetTranslationTarget(client), format);
+	MHud_PrintToChat(client, "%T", "chat.custom_inputs", GetTranslationTarget(client));
 }
 
 static Handle CreateTimeoutTimer(int client)
@@ -43,7 +46,7 @@ public Action Timer_InputTimeout(Handle timer, int userid)
 	int client = GetClientOfUserId(userid);
 	if (client > 0 && IsClientConnected(client))
 	{
-		MHud_PrintToChat(client, "\x07Input timed out!\x01");
+		MHud_PrintToChat(client, "%T", "chat.input_timed_out", GetTranslationTarget(client));
 		ResetWaitForPreferenceChatInputFromClient(client, true);
 	}
 	return Plugin_Continue;
@@ -82,7 +85,7 @@ public Action OnClientSayCommand(int client, const char[] command, const char[] 
 
 static void HandleCancelInput(int client)
 {
-	MHud_PrintToChat(client, "\x07Cancelled input!\x01");
+	MHud_PrintToChat(client, "%T", "chat.input_cancelled", GetTranslationTarget(client));
 }
 
 static void HandleResetInput(int client, char preferenceId[MHUD_MAX_ID])

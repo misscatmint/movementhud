@@ -65,11 +65,11 @@ public Action Command_MHud_Import(int client, int args)
     bool loaded = LoadFromPreferencesCode(client, code);
     if (!loaded)
     {
-        MHud_PrintToChat(client, "Failed to load from code");
+        MHud_PrintToChat(client, "%T", "chat.import_failed", GetTranslationTarget(client));
         return Plugin_Handled;
     }
 
-    MHud_PrintToChat(client, "Successfully imported preferences");
+    MHud_PrintToChat(client, "%T", "chat.import_success", GetTranslationTarget(client));
     return Plugin_Handled;
 }
 
@@ -87,14 +87,17 @@ public Action Command_MHud_Preferences(int client, int args)
     int cursor = (page - 1) * entriesPerPage;
     int goUntil = MHud_ClampInt(page * entriesPerPage, 0, g_Preferences.Length);
 
-    PrintToConsole(client, "[MovementHUD] Page %d of %d preferences:", page, availablePages);
+    PrintToConsole(client, "%T", "console.page_header", GetTranslationTarget(client), page, availablePages);
 
     for (int i = cursor; i < goUntil; i++)
     {
         Preference preference;
         g_Preferences.GetArray(i, preference);
 
-        PrintToConsole(client, "- sm_mhud_%s (%s)", preference.Id, preference.Name);
+        char name[128];
+        GetPreferenceDisplayName(client, preference, name, sizeof(name));
+
+        PrintToConsole(client, "- sm_mhud_%s (%s)", preference.Id, name);
     }
 
     if (page < availablePages)
@@ -102,7 +105,7 @@ public Action Command_MHud_Preferences(int client, int args)
         char cmdName[64];
         GetCmdArg(0, cmdName, sizeof(cmdName));
 
-        PrintToConsole(client, "* See \"%s %d\" for more preferences", cmdName, page + 1);
+        PrintToConsole(client, "%T", "console.more_preferences", GetTranslationTarget(client), cmdName, page + 1);
     }
 
     PrintToConsole(client, "");
@@ -161,9 +164,12 @@ public Action Command_Preference(int client, int args)
     }
 
     char format[64];
-    GetPreferenceFormat(true, preference, format, sizeof(format));
+    GetPreferenceFormat(client, true, preference, format, sizeof(format));
 
-    PrintToConsole(client, "%s Usage for %s:", MHUD_TAG_RAW, preference.Name);
+    char name[128];
+    GetPreferenceDisplayName(client, preference, name, sizeof(name));
+
+    PrintToConsole(client, "%T", "console.usage_header", GetTranslationTarget(client), MHUD_TAG_RAW, name);
     PrintToConsole(client, "- %s get", cmdName);
     PrintToConsole(client, "- %s set %s", cmdName, format);
     PrintToConsole(client, "- %s info", cmdName);
@@ -179,7 +185,10 @@ static void HandleGetCommand(int client, Preference preference)
     char value[MHUD_MAX_VALUE];
     GetPreferenceValue(client, preference, value);
 
-    PrintToConsole(client, "%s %s: %s", MHUD_TAG_RAW, preference.Name, value);
+    char name[128];
+    GetPreferenceDisplayName(client, preference, name, sizeof(name));
+
+    PrintToConsole(client, "%s %s: %s", MHUD_TAG_RAW, name, value);
 }
 
 static void HandleSetCommand(int client, Preference preference, char[] value)
@@ -187,12 +196,12 @@ static void HandleSetCommand(int client, Preference preference, char[] value)
     if (GetCmdArgs() <= 1)
     {
         char format[64];
-        GetPreferenceFormat(true, preference, format, sizeof(format));
+        GetPreferenceFormat(client, true, preference, format, sizeof(format));
 
         char cmdName[64];
         GetCmdArg(0, cmdName, sizeof(cmdName));
 
-        PrintToConsole(client, "Usage: %s set %s", cmdName, format);
+        PrintToConsole(client, "%T", "console.usage_set", GetTranslationTarget(client), cmdName, format);
         return;
     }
 
@@ -210,8 +219,11 @@ static void HandleInfoCommand(int client, Preference preference)
     char type[32] = "N/A";
     preference.Metadata.GetString("type", type, sizeof(type));
 
+    char typeDisplay[32];
+    GetLocalizedPreferenceType(client, type, typeDisplay, sizeof(typeDisplay));
+
     char format[64];
-    GetPreferenceFormat(true, preference, format, sizeof(format));
+    GetPreferenceFormat(client, true, preference, format, sizeof(format));
 
     char defaultVal[MHUD_MAX_VALUE];
     GetPreferenceDefault(preference.Id, defaultVal);
@@ -219,13 +231,16 @@ static void HandleInfoCommand(int client, Preference preference)
     char pluginFile[PLATFORM_MAX_PATH];
     GetPluginFilename(preference.OwningPlugin, pluginFile, sizeof(pluginFile));
 
+    char name[128];
+    GetPreferenceDisplayName(client, preference, name, sizeof(name));
+
     PrintToConsole(client, "%s", MHUD_TAG_RAW);
-    PrintToConsole(client, "- Id: %s", preference.Id);
-    PrintToConsole(client, "- Name: %s", preference.Name);
-    PrintToConsole(client, "- Type: %s", type);
-    PrintToConsole(client, "- Format: %s", format);
-    PrintToConsole(client, "- Provider: %s", pluginFile);
-    PrintToConsole(client, "- Default value: %s", defaultVal);
+    PrintToConsole(client, "- %T: %s", "console.label_id", GetTranslationTarget(client), preference.Id);
+    PrintToConsole(client, "- %T: %s", "console.label_name", GetTranslationTarget(client), name);
+    PrintToConsole(client, "- %T: %s", "console.label_type", GetTranslationTarget(client), typeDisplay);
+    PrintToConsole(client, "- %T: %s", "console.label_format", GetTranslationTarget(client), format);
+    PrintToConsole(client, "- %T: %s", "console.label_provider", GetTranslationTarget(client), pluginFile);
+    PrintToConsole(client, "- %T: %s", "console.label_default_value", GetTranslationTarget(client), defaultVal);
 }
 
 static void HandleCycleCommand(int client, Preference preference)

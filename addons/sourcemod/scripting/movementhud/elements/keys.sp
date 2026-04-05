@@ -17,12 +17,27 @@ static const char Modes[KeysMode_COUNT][] =
     "Blanks invisible"
 };
 
+static const char ModesPhraseKeys[KeysMode_COUNT][] =
+{
+    "enum.keys_mode.disabled",
+    "enum.keys_mode.underscores",
+    "enum.keys_mode.hide_blanks"
+};
+
 static const char SpacingModes[KeysSpaceMode_COUNT][] =
 {
     "1080p FS",
     "1440p resized",
     "1440p native",
     "Legacy"
+};
+
+static const char SpacingModesPhraseKeys[KeysSpaceMode_COUNT][] =
+{
+    "enum.spacing_mode.full_hd_fullscreen",
+    "enum.spacing_mode.qhd_scaled",
+    "enum.spacing_mode.qhd_native",
+    "enum.spacing_mode.legacy"
 };
 
 static const char KeysColors[SpeedKeyColor_COUNT][] =
@@ -33,17 +48,36 @@ static const char KeysColors[SpeedKeyColor_COUNT][] =
     "Color by gain (Average)"
 };
 
+static const char KeysColorsPhraseKeys[SpeedKeyColor_COUNT][] =
+{
+    "value.disabled",
+    "enum.color_by_speed.current_speed",
+    "enum.color_by_speed.gain_instant",
+    "enum.color_by_speed.gain_average"
+};
+
 static const char KeysStyle[KeysMouseStyle_COUNT][] = 
 {
     "Disabled",
     "Style 1",
     "Style 2"
-}
+};
+
+static const char KeysStylePhraseKeys[KeysMouseStyle_COUNT][] =
+{
+    "value.disabled",
+    "enum.mouse_direction.side_arrows",
+    "enum.mouse_direction.arrow_row"
+};
 
 void OnPluginStart_Elements_Mode_Keys()
 {
     KeysMode = new MHudEnumPreference("keys_mode", "Keys - Mode", Modes, sizeof(Modes) - 1, KeysMode_None);
+    SetPreferenceNamePhraseKey(KeysMode, "pref.keys_mode");
+    SetEnumValuePhraseKeys(KeysMode, ModesPhraseKeys, sizeof(ModesPhraseKeys));
+
     KeysPosition = new MHudXYPreference("keys_position", "Keys - Position", -1, 800);
+    SetPreferenceNamePhraseKey(KeysPosition, "pref.keys_position");
 }
 
 void OnPluginStart_Elements_Other_Keys()
@@ -51,13 +85,28 @@ void OnPluginStart_Elements_Other_Keys()
     HudSync = CreateHudSynchronizer();
 
     KeysNormalColor = new MHudRGBPreference("keys_color_normal", "Keys - Normal Color", 255, 255, 255);
+    SetPreferenceNamePhraseKey(KeysNormalColor, "pref.keys_color_normal");
+
     KeysOverlapColor = new MHudRGBPreference("keys_color_overlap", "Keys - Overlap Color", 255, 0, 0);
+    SetPreferenceNamePhraseKey(KeysOverlapColor, "pref.keys_color_overlap");
+
     KeysMouseDirection = new MHudEnumPreference("keys_mouse_direction", "Keys - Mouse Direction", KeysStyle, sizeof(KeysStyle) - 1, KeyMouseStyle_Disabled);
+    SetPreferenceNamePhraseKey(KeysMouseDirection, "pref.keys_mouse_direction");
+    SetEnumValuePhraseKeys(KeysMouseDirection, KeysStylePhraseKeys, sizeof(KeysStylePhraseKeys));
+
     KeysColorBySpeed = new MHudEnumPreference("keys_color_by_speed", "Keys - Color by Speed", KeysColors, sizeof(KeysColors) - 1, SpeedKeyColor_None);
+    SetPreferenceNamePhraseKey(KeysColorBySpeed, "pref.keys_color_by_speed");
+    SetEnumValuePhraseKeys(KeysColorBySpeed, KeysColorsPhraseKeys, sizeof(KeysColorsPhraseKeys));
+
     KeysSpaceMode = new MHudEnumPreference("keys_spacing_mode", "Keys - Spacing Mode", SpacingModes, sizeof(SpacingModes) - 1, KeysSpaceMode_NativeHD);
+    SetPreferenceNamePhraseKey(KeysSpaceMode, "pref.keys_spacing_mode");
+    SetEnumValuePhraseKeys(KeysSpaceMode, SpacingModesPhraseKeys, sizeof(SpacingModesPhraseKeys));
 
     KeysGainColor = new MHudRGBPreference("keys_color_gain", "Keys - Gain Color", 0, 255, 0);
+    SetPreferenceNamePhraseKey(KeysGainColor, "pref.keys_color_gain");
+
     KeysLossColor = new MHudRGBPreference("keys_color_loss", "Keys - Loss Color", 255, 0, 0);
+    SetPreferenceNamePhraseKey(KeysLossColor, "pref.keys_color_loss");
 }
 
 void OnGameFrame_Element_Keys(int client, int target)

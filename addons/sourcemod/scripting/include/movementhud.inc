@@ -165,6 +165,70 @@ methodmap MHudPreference < Handle
 
 // =====[ STOCKS ]=====
 
+stock int GetTranslationTarget(int client)
+{
+    return client > 0 ? client : LANG_SERVER;
+}
+
+stock void TranslatePhrase(int client, const char[] phraseKey, char[] buffer, int maxlength)
+{
+    Format(buffer, maxlength, "%T", phraseKey, GetTranslationTarget(client));
+}
+
+stock void SetPreferenceNamePhraseKey(MHudPreference preference, const char[] phraseKey)
+{
+    char phraseKeyCopy[64];
+    strcopy(phraseKeyCopy, sizeof(phraseKeyCopy), phraseKey);
+    preference.WithMetadata("name_key", phraseKeyCopy);
+}
+
+stock void SetEnumValuePhraseKeys(MHudEnumPreference preference, const char[][] phraseKeys, int count)
+{
+    char metadataKey[32];
+    char phraseKeyCopy[64];
+
+    for (int i = 0; i < count; i++)
+    {
+        Format(metadataKey, sizeof(metadataKey), "value_key[%d]", i);
+        strcopy(phraseKeyCopy, sizeof(phraseKeyCopy), phraseKeys[i]);
+        preference.WithMetadata(metadataKey, phraseKeyCopy);
+    }
+}
+
+stock void GetLocalizedPreferenceType(int client, const char[] rawType, char[] buffer, int maxlength)
+{
+    if (StrEqual(rawType, "bool"))
+    {
+        TranslatePhrase(client, "type.bool", buffer, maxlength);
+        return;
+    }
+
+    if (StrEqual(rawType, "enum"))
+    {
+        TranslatePhrase(client, "type.enum", buffer, maxlength);
+        return;
+    }
+
+    if (StrEqual(rawType, "xy"))
+    {
+        TranslatePhrase(client, "type.xy", buffer, maxlength);
+        return;
+    }
+
+    if (StrEqual(rawType, "rgb"))
+    {
+        TranslatePhrase(client, "type.rgb", buffer, maxlength);
+        return;
+    }
+
+    strcopy(buffer, maxlength, rawType);
+}
+
+stock void GetIndicatorLabel(int client, bool abbreviated, const char[] abbreviatedKey, const char[] fullKey, char[] buffer, int maxlength)
+{
+    TranslatePhrase(client, abbreviated ? abbreviatedKey : fullKey, buffer, maxlength);
+}
+
 stock void MHud_PrintToChat(int client, const char[] format, any ...)
 {
     char buffer[256];

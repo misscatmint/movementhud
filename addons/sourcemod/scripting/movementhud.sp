@@ -62,6 +62,8 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart()
 {
+	LoadTranslations("movementhud.phrases");
+
 	OnPluginStart_Commands();
 	OnPluginStart_Preferences();
 	OnPluginStart_PreferencesDefaults();

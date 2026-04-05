@@ -15,6 +15,21 @@ static char RGBMapping[][][] =
 	{ "128 128 128", "Gray" }
 };
 
+static const char RGBPhraseKeys[][] =
+{
+    "rgb.red",
+    "rgb.green",
+    "rgb.lime",
+    "rgb.blue",
+    "rgb.cyan",
+    "rgb.yellow",
+    "rgb.orange",
+    "rgb.purple",
+    "rgb.white",
+    "rgb.black",
+    "rgb.gray"
+};
+
 static void StringToRGB(const char[] str, int rgb[3])
 {
     char entries[3][4];
@@ -45,6 +60,7 @@ methodmap MHudRGBPreference < MHudPreference
             preference
                 .WithMetadata("type", "rgb")
                 .WithMetadata("format", "<\x070-255\x01> <\x040-255\x01> <\x0C0-255\x01>")
+                .WithMetadata("format_key", "format.rgb")
                 .WithMetadataCell("self", preference)
                 .HandleInput(MHud_RGB_InputHandler)
                 .HandleDisplay(MHud_RGB_DisplayHandler)
@@ -94,11 +110,11 @@ public bool MHud_RGB_DisplayHandler(int client, char[] buffer, int maxlength, St
     int currentIndex = MHud_GetCurrentPresetIndex(value, RGBMapping, sizeof(RGBMapping));
     if (currentIndex == -1)
     {
-        Format(buffer, maxlength, "Custom");
+        TranslatePhrase(client, "value.custom", buffer, maxlength);
         return true;
     }
 
-    Format(buffer, maxlength, "%s", RGBMapping[currentIndex][1]);
+    TranslatePhrase(client, RGBPhraseKeys[currentIndex], buffer, maxlength);
     return true;
 }
 

@@ -10,9 +10,6 @@ methodmap MHudEnumPreference < MHudPreference
         char defaultVal[MHUD_MAX_VALUE];
         IntToString(defaultInt, defaultVal, sizeof(defaultVal));
 
-        char format[64];
-        Format(format, sizeof(format), "<\x030-%d\x01>", numValues);
-
         MHudPreference preference = MHudPreference.Create(id, name, defaultVal);
 
         for (int i = 0; i <= numValues; i++)
@@ -26,7 +23,6 @@ methodmap MHudEnumPreference < MHudPreference
         return view_as<MHudEnumPreference>(
             preference
                 .WithMetadata("type", "enum")
-                .WithMetadata("format", format)
                 .WithMetadataCell("max", numValues)
                 .WithMetadataCell("self", preference)
                 .HandleInput(MHud_Enum_InputHandler)
@@ -79,6 +75,15 @@ public bool MHud_Enum_DisplayHandler(int client, char[] buffer, int maxlength, S
     char szKey[64];
     Format(szKey, sizeof(szKey), "values[%d]", value);
 
+    char phraseKey[64];
+    Format(szKey, sizeof(szKey), "value_key[%d]", value);
+    if (metadata.GetString(szKey, phraseKey, sizeof(phraseKey)))
+    {
+        TranslatePhrase(client, phraseKey, buffer, maxlength);
+        return true;
+    }
+
+    Format(szKey, sizeof(szKey), "values[%d]", value);
     metadata.GetString(szKey, buffer, maxlength);
     return true;
 }

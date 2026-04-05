@@ -38,6 +38,7 @@ methodmap MHudBoolPreference < MHudPreference
             preference
                 .WithMetadata("type", "bool")
                 .WithMetadata("format", "<\x03true/false\x01>")
+                .WithMetadata("format_key", "format.bool")
                 .WithMetadataCell("self", preference)
                 .HandleInput(MHud_Bool_InputHandler)
                 .HandleDisplay(MHud_Bool_DisplayHandler)
@@ -82,7 +83,7 @@ public bool MHud_Bool_DisplayHandler(int client, char[] buffer, int maxlength, S
 
     bool enabled = preference.GetBool(client);
 
-    Format(buffer, maxlength, "%s", enabled ? "Enabled" : "Disabled");
+    TranslatePhrase(client, enabled ? "value.enabled" : "value.disabled", buffer, maxlength);
     return true;
 }
 

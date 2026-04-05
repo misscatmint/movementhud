@@ -12,8 +12,13 @@ void DisplayMainMenu(int client)
     Menu menu = new Menu(MenuHandler_Main);
     menu.SetTitle("MovementHUD %.20s\n%s\n ", MHUD_VERSION, MHUD_SOURCE_URL);
 
-    menu.AddItem("1", "Simple preferences");
-    menu.AddItem("2", "Advanced preferences");
+    char basicLabel[64];
+    TranslatePhrase(client, "menu.basic_preferences", basicLabel, sizeof(basicLabel));
+    menu.AddItem("1", basicLabel);
+
+    char advancedLabel[64];
+    TranslatePhrase(client, "menu.advanced_preferences", advancedLabel, sizeof(advancedLabel));
+    menu.AddItem("2", advancedLabel);
     //menu.AddItem("3", "Preferences helpers & tools");
 
     menu.ExitButton = true;
@@ -33,6 +38,9 @@ void DisplayPreferencesMenu(int client, bool advanced, bool fromMainMenu = false
         Preference preference;
         g_Preferences.GetArray(i, preference);
 
+        char preferenceName[128];
+        GetPreferenceDisplayName(client, preference, preferenceName, sizeof(preferenceName));
+
         char display[256];
 
         // Show raw values if in custom mode
@@ -41,7 +49,7 @@ void DisplayPreferencesMenu(int client, bool advanced, bool fromMainMenu = false
             char value[MHUD_MAX_VALUE];
             GetPreferenceValue(client, preference, value);
 
-            Format(display, sizeof(display), "%s: %s", preference.Name, value);
+            Format(display, sizeof(display), "%s: %s", preferenceName, value);
         }
         else
         {
@@ -51,13 +59,13 @@ void DisplayPreferencesMenu(int client, bool advanced, bool fromMainMenu = false
                 continue;
             }
 
-            Format(display, sizeof(display), "%s: %s", preference.Name, display);
+            Format(display, sizeof(display), "%s: %s", preferenceName, display);
         }
 
         bool isCorePreference = preference.OwningPlugin == GetMyHandle();
         if (!isCorePreference)
         {
-            Format(display, sizeof(display), "[Third-Party] %s", display);
+            Format(display, sizeof(display), "%T", "menu.third_party_prefix", GetTranslationTarget(client), display);
         }
 
         menu.AddItem(preference.Id, display);

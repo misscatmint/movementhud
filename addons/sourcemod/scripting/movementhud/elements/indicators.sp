@@ -19,7 +19,10 @@ MHudBoolPreference IndicatorsCrouchEnabled;
 void OnPluginStart_Elements_Mode_Indicators()
 {
     IndicatorsMode = new MHudBoolPreference("indicators_mode", "Indicators - Mode", true);
+    SetPreferenceNamePhraseKey(IndicatorsMode, "pref.indicators_mode");
+
     IndicatorsPosition = new MHudXYPreference("indicators_position", "Indicators - Position", 550, 725);
+    SetPreferenceNamePhraseKey(IndicatorsPosition, "pref.indicators_position");
 }
 
 void OnPluginStart_Elements_Other_Indicators()
@@ -27,15 +30,34 @@ void OnPluginStart_Elements_Other_Indicators()
     HudSync = CreateHudSynchronizer();
 
     IndicatorsColor = new MHudRGBPreference("indicators_color", "Indicators - Color", 0, 255, 0);
+    SetPreferenceNamePhraseKey(IndicatorsColor, "pref.indicators_color");
+
     IndicatorsJBColor = new MHudRGBPreference("indicators_jb_color", "Indicators - Jump Bug Color", 0, 255, 0);
+    SetPreferenceNamePhraseKey(IndicatorsJBColor, "pref.indicators_jb_color");
+
     IndicatorsPBColor = new MHudRGBPreference("indicators_pb_color", "Indicators - Perfect Bhop Color", 0, 255, 0);
+    SetPreferenceNamePhraseKey(IndicatorsPBColor, "pref.indicators_pb_color");
+
     IndicatorsJBEnabled = new MHudBoolPreference("indicators_jb_enabled", "Indicators - Jump Bug", false);
+    SetPreferenceNamePhraseKey(IndicatorsJBEnabled, "pref.indicators_jb_enabled");
+
     IndicatorsCJEnabled = new MHudBoolPreference("indicators_cj_enabled", "Indicators - Crouch Jump", false);
+    SetPreferenceNamePhraseKey(IndicatorsCJEnabled, "pref.indicators_cj_enabled");
+
     IndicatorsPBEnabled = new MHudBoolPreference("indicators_pb_enabled", "Indicators - Perfect Bhop", false);
+    SetPreferenceNamePhraseKey(IndicatorsPBEnabled, "pref.indicators_pb_enabled");
+
     IndicatorsEBEnabled = new MHudBoolPreference("indicators_eb_enabled", "Indicators - Edge Bug", false);
+    SetPreferenceNamePhraseKey(IndicatorsEBEnabled, "pref.indicators_eb_enabled");
+
     IndicatorsFTGEnabled = new MHudBoolPreference("indicators_ftg", "Indicators - First Tick Gain", false);
+    SetPreferenceNamePhraseKey(IndicatorsFTGEnabled, "pref.indicators_ftg");
+
     IndicatorsCrouchEnabled = new MHudBoolPreference("indicators_crouch", "Indicators - Crouch Status", false);
+    SetPreferenceNamePhraseKey(IndicatorsCrouchEnabled, "pref.indicators_crouch");
+
     IndicatorsAbbreviations = new MHudBoolPreference("indicators_abbrs", "Indicators - Abbreviations", true);
+    SetPreferenceNamePhraseKey(IndicatorsAbbreviations, "pref.indicators_abbrs");
 }
 
 void OnGameFrame_Element_Indicators(int client, int target)
@@ -82,49 +104,67 @@ void OnGameFrame_Element_Indicators(int client, int target)
     char buffer[64];
     if (drawJB)
     {
+        char label[32];
+        GetIndicatorLabel(client, useAbbr, "indicator_abbr.jumpbug", "indicator.jumpbug", label, sizeof(label));
+
         Format(buffer, sizeof(buffer), "%s%s\n",
             buffer,
-            useAbbr ? "JB" : "JUMPBUG"
+            label
         );
     }
 
     if (drawCJ)
     {
+        char label[32];
+        GetIndicatorLabel(client, useAbbr, "indicator_abbr.crouch_jump", "indicator.crouch_jump", label, sizeof(label));
+
         Format(buffer, sizeof(buffer), "%s%s\n",
             buffer,
-            useAbbr ? "CJ" : "CROUCH JUMP"
+            label
         );
     }
 
     if (drawPB)
     {
+        char label[32];
+        GetIndicatorLabel(client, useAbbr, "indicator_abbr.perfect_bhop", "indicator.perfect_bhop", label, sizeof(label));
+
         Format(buffer, sizeof(buffer), "%s%s\n",
             buffer,
-            useAbbr ? "PERF" : "PERFECT BHOP"
+            label
         );
     }
 
     if (drawEB)
     {
+        char label[32];
+        GetIndicatorLabel(client, useAbbr, "indicator_abbr.edge_bug", "indicator.edge_bug", label, sizeof(label));
+
         Format(buffer, sizeof(buffer), "%s%s\n",
             buffer,
-            useAbbr ? "EB" : "EDGE BUG"
+            label
         );
     }
 
     if (drawFTG)
     {
+        char label[32];
+        GetIndicatorLabel(client, useAbbr, "indicator_abbr.first_tick_gain", "indicator.first_tick_gain", label, sizeof(label));
+
         Format(buffer, sizeof(buffer), "%s%s\n",
             buffer,
-            useAbbr ? "G" : "FIRST TICK GAIN"
+            label
         );
     }
 
     if (drawCrouch)
     {
+        char label[32];
+        GetIndicatorLabel(client, useAbbr, "indicator_abbr.crouched", "indicator.crouched", label, sizeof(label));
+
         Format(buffer, sizeof(buffer), "%s%s\n",
             buffer,
-            useAbbr ? "C" : "CROUCHED"
+            label
         );
     }
     ShowSyncHudText(client, HudSync, "%s", buffer);

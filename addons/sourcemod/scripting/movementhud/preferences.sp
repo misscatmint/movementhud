@@ -144,12 +144,40 @@ void GetPreferenceValue(int client, Preference preference, char buffer[MHUD_MAX_
     SetPreferenceValueCache(client, preference, buffer);
 }
 
-void GetPreferenceFormat(bool stripColors, Preference preference, char[] buffer, int maxlength)
+void GetPreferenceDisplayName(int client, Preference preference, char[] buffer, int maxlength)
 {
-    bool exists = preference.Metadata.GetString("format", buffer, maxlength);
-    if (!exists)
+    char phraseKey[64];
+    if (preference.Metadata.GetString("name_key", phraseKey, sizeof(phraseKey)))
     {
-        Format(buffer, maxlength, "<\x03value\x01>");
+        TranslatePhrase(client, phraseKey, buffer, maxlength);
+        return;
+    }
+
+    strcopy(buffer, maxlength, preference.Name);
+}
+
+void GetPreferenceFormat(int client, bool stripColors, Preference preference, char[] buffer, int maxlength)
+{
+    char formatKey[64];
+    if (preference.Metadata.GetString("format_key", formatKey, sizeof(formatKey)))
+    {
+        TranslatePhrase(client, formatKey, buffer, maxlength);
+    }
+    else
+    {
+        char type[32];
+        preference.Metadata.GetString("type", type, sizeof(type));
+
+        if (StrEqual(type, "enum"))
+        {
+            int max = 0;
+            preference.Metadata.GetValue("max", max);
+            Format(buffer, maxlength, "%T", "format.enum_range", GetTranslationTarget(client), max);
+        }
+        else if (!preference.Metadata.GetString("format", buffer, maxlength))
+        {
+            TranslatePhrase(client, "format.value", buffer, maxlength);
+        }
     }
 
     if (stripColors)
@@ -204,10 +232,13 @@ void PrintChangeMessage(int client, Preference preference)
     char value[MHUD_MAX_VALUE];
     GetPreferenceValue(client, preference, value);
 
+    char name[128];
+    GetPreferenceDisplayName(client, preference, name, sizeof(name));
+
     char display[128];
     Call_DisplayHandler(client, preference, display, sizeof(display));
 
-    MHud_PrintToChat(client, "\x05%s\x01 has been set to: \x03%s\x01 (\x0C%s\x01)", preference.Name, value, display);
+    MHud_PrintToChat(client, "%T", "chat.preference_set", GetTranslationTarget(client), name, value, display);
 }
 
 bool Call_InputHandler(int client, Preference preference, char[] input, char buffer[MHUD_MAX_VALUE])
