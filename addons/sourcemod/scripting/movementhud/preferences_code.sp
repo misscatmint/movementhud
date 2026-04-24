@@ -25,7 +25,6 @@ void OnPluginStart_PreferencesCode()
     PreferencesInCode.Push(SpeedColorBySpeed);
     PreferencesInCode.Push(KeysColorBySpeed);
     PreferencesInCode.Push(IndicatorsColor);
-    PreferencesInCode.Push(IndicatorsJBColor);
     PreferencesInCode.Push(IndicatorsPosition);
     PreferencesInCode.Push(IndicatorsJBEnabled);
     PreferencesInCode.Push(IndicatorsCJEnabled);
@@ -42,11 +41,12 @@ void OnPluginStart_PreferencesCode()
     PreferencesInCode.Push(KeysLossColor);
 
     PreferencesInCode.Push(IndicatorsMode);
-    PreferencesInCode.Push(DisableInFreeCamera);
-    PreferencesInCode.Push(SpeedJBColor);
-    PreferencesInCode.Push(IndicatorsPBColor);
 
     // Revision 4
+    PreferencesInCode.Push(DisableInFreeCamera);
+    PreferencesInCode.Push(SpeedJBColor);
+    PreferencesInCode.Push(IndicatorsJBColor);
+    PreferencesInCode.Push(IndicatorsPBColor);
     PreferencesInCode.Push(SpeedCJEnabled);
 }
 
